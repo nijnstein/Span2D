@@ -5,6 +5,7 @@
   
 
 
+
 A Span working on a 2 dimensional array 
 
 ```csharp
@@ -24,4 +25,18 @@ data2d.Column[0].CopyTo(a);
 
 float[] b = data2d.Column[1].ToArray(); 
 
+```
+
+
+# Column indexing
+
+```csharp
+ var data = new float[2, 2] { { 1, 2 }, { 3, 4 } };
+ Span2D<float> s = data.AsSpan2D<float>();
+ Assert.IsTrue(s.Column(0)[0] == 1f);
+ Assert.IsTrue(s.Column(0)[1] == 3f);
+ Assert.IsTrue(s.Column(1)[0] == 2f);
+ Assert.IsTrue(s.Column(1)[1] == 4f);
+ 
+ Assert.IsTrue(s.Column(1).Sum() == 6f); 
 ```
